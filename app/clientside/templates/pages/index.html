@@ -1,5 +1,54 @@
 {% extends "root.html" %}
 
-{% block title %} {% endblock %}
+{% block title %}Лавочки map{% endblock %}
 
-{% block content %} ЭТО ПЕРВАЯ СТРАНИЦА {% endblock %}
+{% block content %}
+
+{% include 'el/header.html' %}
+
+
+<div class="container" id="content">
+    <div class="row navbar">
+        <div class="col-md">
+            <a href=""><i class="fa-solid fa-house"></i> Главная</a>
+        </div>
+        <div class="col-md">
+            <a href=""><i class="fa-solid fa-magnifying-glass"></i> Найти лавочку рядом</a>
+        </div>
+        <div class="col-md">
+            <a href="" ><i class="fa-solid fa-user"></i> Войти/Зарегистрироваться</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row control-set">
+        <div class="col cs-map">
+            <a href="">Карта</a>
+        </div>
+
+        <div class="col cs-list">
+            <a href="">Список</a>
+        </div>
+        
+    </div>
+
+    
+    <div class="row control" id="map">
+        <div class="col">
+
+        </div>        
+    </div>
+
+    <div class="row control" id="list">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+
+{% include 'el/footer.html' %}
+
+
+
+{% endblock %}
