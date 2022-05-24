@@ -2,3 +2,6 @@ __pycache__/
 *.py[cod]
 
 lavochki-env
+lavochkienv
+
+db.sqlite3
