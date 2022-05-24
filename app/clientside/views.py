@@ -4,3 +4,6 @@ from django.shortcuts import render
  
 def pg_index(request):
     return render(request, "pages/index.html")
+
+def pg_form(request):
+    return render(request, "pages/form.html")

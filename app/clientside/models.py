@@ -5,7 +5,7 @@ from django.dispatch import receiver
 
 class PhotoLav(models.Model):
     alt = models.CharField(max_length=200)
-    image_path = models.CharField(max_length=200)
+    image_path = models.ImageField(upload_to='media')
     is_valid = models.BooleanField(default=False)
 
 class Lavochki(models.Model):
