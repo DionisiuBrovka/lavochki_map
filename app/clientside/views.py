@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from .models import Lavochki
+from .forms import AddLavochkaForm
 
 # Create your views here.
  
@@ -12,7 +13,18 @@ def pg_index(request):
     return render(request, "pages/index.html", data)
 
 def pg_add_form(request):
-    return render(request, "pages/add_form.html")
+    data = {
+        'form':AddLavochkaForm()
+    }
+
+    return render(request, "pages/add_form.html", data)
+
+def pg_valid_add_form(request):
+    data = {
+        'form':AddLavochkaForm()
+    }
+
+    return render(request, "pages/add_form.html", data)
 
 def pg_edit_form(request):
     return render(request, "pages/edit_form.html")

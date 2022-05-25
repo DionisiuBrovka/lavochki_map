@@ -6,7 +6,20 @@
     {% include 'el/header.html' %}
 
     <div class="container" id="content">
-        
+        {% include 'el/navbar.html' %}
+
+        <form action="/valid_add_form" method="post">
+            {% csrf_token %}
+            <h2>Добавление лавочки</h2>
+            <hr>
+
+            <div class="form-group">
+                <label for="obj-disc">Описание лавочки : </label>
+                {{ form.disc }}
+            </div>
+
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
     </div>
 
     {% include 'el/footer.html' %}

@@ -11,12 +11,12 @@ class PhotoLav(models.Model):
 class Lavochki(models.Model):
     x = models.FloatField()
     y = models.FloatField()
-    descroption = models.TextField()
-    photos_id = models.ForeignKey(PhotoLav, on_delete = models.CASCADE)
+    descroption = models.TextField(blank=True)
+    photos_id = models.ForeignKey(PhotoLav, on_delete = models.CASCADE, blank=True)
     user_id = models.ForeignKey(User, on_delete = models.CASCADE)
     is_valid = models.BooleanField()
-    raiting = models.FloatField()
-    date_added = models.DateTimeField()
+    raiting = models.FloatField(blank=True)
+    date_added = models.DateTimeField(auto_now=True)
 
 class Marks(models.Model):
     user_id = models.ForeignKey(User, on_delete = models.CASCADE)
