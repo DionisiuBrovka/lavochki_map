@@ -13,6 +13,23 @@
             <h2>Добавление лавочки</h2>
             <hr>
 
+            <div class="form-group map_point_input" id="map">
+                <input type="hidden" id="input_x" name="x">
+                <input type="hidden" id="input_y" name="y">
+            </div>
+
+
+            <div class="form-group">
+                <label for="obj-disc">X : </label>
+                {{ form.x }}
+            </div>
+
+            <div class="form-group">
+                <label for="obj-disc">Y : </label>
+                {{ form.y }}
+            </div>
+
+
             <div class="form-group">
                 <label for="obj-disc">Описание лавочки : </label>
                 {{ form.disc }}
@@ -26,6 +43,73 @@
 {% endblock %}
 
 {% block script %}
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=49612769-c3fb-4f04-9af4-4bc936b52525" type="text/javascript"></script>
+<script>
+    ymaps.ready(init);
+    var myMap;
+
+    function init () {
+        myMap = new ymaps.Map("map", {
+            center: [57.5262, 38.3061], // Углич
+            zoom: 11
+        }, {
+            balloonMaxWidth: 200,
+            searchControlProvider: 'yandex#search'
+        });
+
+        // Обработка события, возникающего при щелчке
+        // левой кнопкой мыши в любой точке карты.
+        // При возникновении такого события откроем балун.
+        myMap.events.add('click', function (e) {
+
+            var in_x = document.getElementById('input_x');
+            var in_y = document.getElementById('input_y');
+
+            if (!myMap.balloon.isOpen()) {
+                var coords = e.get('coords');
+                myMap.balloon.open(coords, {
+                    contentHeader:'Лавочка',
+                    contentBody:
+                        '<p>Координаты лавочки: ' + [
+                        coords[0].toPrecision(6),
+                        coords[1].toPrecision(6)
+                        ].join(', ') + '</p>',
+                    contentFooter:'<sup>Щелкните еще раз что бы поменять координаты</sup>'
+                });
+                in_x.value = coords[0].toPrecision(6);
+                in_y.value = coords[1].toPrecision(6);
+            }
+            else {
+                myMap.balloon.close();
+                var coords = e.get('coords');
+                myMap.balloon.open(coords, {
+                    contentHeader:'Лавочка',
+                    contentBody:
+                        '<p>Координаты лавочки: ' + [
+                        coords[0].toPrecision(6),
+                        coords[1].toPrecision(6)
+                        ].join(', ') + '</p>',
+                    contentFooter:'<sup>Щелкните еще раз что бы поменять координаты</sup>'
+                });
+                in_x.value = coords[0].toPrecision(6);
+                in_y.value = coords[1].toPrecision(6);
+            }
+        });
+
+        // Обработка события, возникающего при щелчке
+        // правой кнопки мыши в любой точке карты.
+        // При возникновении такого события покажем всплывающую подсказку
+        // в точке щелчка.
+        myMap.events.add('contextmenu', function (e) {
+            myMap.hint.open(e.get('coords'), 'Кто-то щелкнул правой кнопкой');
+        });
+        
+        // Скрываем хинт при открытии балуна.
+        myMap.events.add('balloonopen', function (e) {
+            myMap.hint.close();
+        });
+    }
+</script>
 {% endblock %}
 
 

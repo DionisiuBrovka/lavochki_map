@@ -127,3 +127,6 @@ body{
     margin: 0%;
 }
 
+.map_point_input{
+    min-height: 70vh;
+}
