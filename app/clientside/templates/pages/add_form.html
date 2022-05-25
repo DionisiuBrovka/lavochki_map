@@ -8,7 +8,7 @@
     <div class="container" id="content">
         {% include 'el/navbar.html' %}
 
-        <form action="/valid_add_form" method="post">
+        <form action="" method="post">
             {% csrf_token %}
             <h2>Добавление лавочки</h2>
             <hr>
@@ -18,21 +18,13 @@
                 <input type="hidden" id="input_y" name="y">
             </div>
 
-
-            <div class="form-group">
-                <label for="obj-disc">X : </label>
-                {{ form.x }}
-            </div>
-
-            <div class="form-group">
-                <label for="obj-disc">Y : </label>
-                {{ form.y }}
-            </div>
-
-
             <div class="form-group">
                 <label for="obj-disc">Описание лавочки : </label>
                 {{ form.disc }}
+            </div>
+
+            <div class="form-group">
+                {{ form.photo  }}
             </div>
 
             <input type="submit" class="btn btn-primary" value="Submit">

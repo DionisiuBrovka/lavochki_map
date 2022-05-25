@@ -13,13 +13,10 @@ def pg_index(request):
     return render(request, "pages/index.html", data)
 
 def pg_add_form(request):
-    data = {
-        'form':AddLavochkaForm()
-    }
+    if request.method == 'POST':
+        print(request.POST)
+        print(request.FILES)
 
-    return render(request, "pages/add_form.html", data)
-
-def pg_valid_add_form(request):
     data = {
         'form':AddLavochkaForm()
     }
