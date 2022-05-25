@@ -1,3 +1,5 @@
+
+
 {% extends "root.html" %}
 
 {% block title %}Лавочки map{% endblock %}
@@ -10,6 +12,12 @@
         {% include 'el/navbar.html' %}
 
         <hr>
+        <h2>Вход</h2>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Войти</button>
+        </form>
 
     </div>
 
