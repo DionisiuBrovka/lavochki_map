@@ -3,44 +3,164 @@
 {% block title %}Лавочки map{% endblock %}
 
 {% block content %}
-    {% include 'el/header.html' %}
+{% include 'el/header.html' %}
 
-    <div class="container" id="content">
-        {% include 'el/navbar.html' %}
+<div class="container" id="content">
+    {% include 'el/navbar.html' %}
 
-        <form action="" method="post">
-            {% csrf_token %}
-            <h2>Добавление лавочки</h2>
-            <hr>
+    <form action="" method="post" id="add-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Добавление лавочки</h2>
+        <hr>
 
-            <div class="form-group map_point_input" id="map">
-                <input type="hidden" id="input_x" name="x">
-                <input type="hidden" id="input_y" name="y">
+        <div class="form-group map_point_input" id="map">
+        </div>
+
+        <div class="row">
+
+            <div class="col">
+                <label for="">Координаты лавочки : <i class="req">*</i></label>
             </div>
-
-            <div class="form-group">
-                <label for="obj-disc">Описание лавочки : </label>
-                {{ form.disc }}
+            <div class="col">
+                <input class="form-control" type="text" id="input_x" name="x" readonly required>
             </div>
-
-            <div class="form-group">
-                {{ form.photo  }}
+            <div class="col">
+                <input class="form-control" type="text" id="input_y" name="y" readonly required>
             </div>
+        </div>
 
-            <input type="submit" class="btn btn-primary" value="Submit">
-        </form>
-    </div>
+        <div class="form-group">
+            <label for="obj-disc">Описание лавочки : <i class="req">*</i></label>
+            <textarea name="disc" class="form-control" id="" cols="30" rows="10" required></textarea>
+        </div>
 
-    {% include 'el/footer.html' %}
+        <hr>
+
+        <div class="row">
+            <div class="col">
+                <div class="row form-group">
+                    <div class="col-md">
+                        <label for="obj-disc">Лавочка находится возле подъезда : </label>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_padik" id="inlineRadio1" value="1">
+                            <label class="form-check-label" for="inlineRadio1">Да</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_padik" id="inlineRadio2" value="2">
+                            <label class="form-check-label" for="inlineRadio2">Нет</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_padik" id="inlineRadio3" value="0">
+                            <label class="form-check-label" for="inlineRadio3">Незнаю</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="row form-group">
+                    <div class="col">
+                        <label for="obj-disc">Лавочка находится в тени : </label>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_ten" id="inlineRadio4" value="1">
+                            <label class="form-check-label" for="inlineRadio4">Да</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_ten" id="inlineRadio5" value="2">
+                            <label class="form-check-label" for="inlineRadio5">Нет</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_ten" id="inlineRadio6" value="3">
+                            <label class="form-check-label" for="inlineRadio6">Незнаю</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+
+        <div class="row">
+            <div class="col">
+                <div class="row form-group">
+                    <div class="col-md">
+                        <label for="obj-disc"> Выберите активность возле лавочки : <i class="req">*</i></label>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="active" id="inlineRadio7" value="1" required>
+                            <label class="form-check-label" for="inlineRadio7">
+                                <i class="fa-solid fa-fire fa-color-a"></i>
+                                <i class="fa-solid fa-fire fa-color-d"></i>
+                                <i class="fa-solid fa-fire fa-color-d"></i>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="active" id="inlineRadio8" value="2" required>
+                            <label class="form-check-label" for="inlineRadio8">
+                                <i class="fa-solid fa-fire fa-color-a"></i>
+                                <i class="fa-solid fa-fire fa-color-a"></i>
+                                <i class="fa-solid fa-fire fa-color-d"></i>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="active" id="inlineRadio9" value="3" required>
+                            <label class="form-check-label" for="inlineRadio9">
+                                <i class="fa-solid fa-fire fa-color-a"></i>
+                                <i class="fa-solid fa-fire fa-color-a"></i>
+                                <i class="fa-solid fa-fire fa-color-a"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="row form-group">
+                    <div class="col">
+                        <label for="obj-disc">Ваша оценка лавочки: <i class="req">*</i></label>
+                        <br>
+                        <select class="form-control" name="rating" id="" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="form-group">
+            <label class="" for="">Выберите фотографии лавочи : <i class="req">*</i></label>
+            <div class="custom-file">
+                <input type="file" name="files" class="custom-file-input" id="customFile" multiple required>
+                <label class="custom-file-label" for="customFile">Выбрать</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <small><i class="req">*</i> - Обязательные для заполнения поля</small>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+</div>
+
+{% include 'el/footer.html' %}
 {% endblock %}
 
 {% block script %}
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=49612769-c3fb-4f04-9af4-4bc936b52525" type="text/javascript"></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=49612769-c3fb-4f04-9af4-4bc936b52525"
+    type="text/javascript"></script>
 <script>
     ymaps.ready(init);
     var myMap;
 
-    function init () {
+    function init() {
         myMap = new ymaps.Map("map", {
             center: [57.5262, 38.3061], // Углич
             zoom: 11
@@ -60,13 +180,13 @@
             if (!myMap.balloon.isOpen()) {
                 var coords = e.get('coords');
                 myMap.balloon.open(coords, {
-                    contentHeader:'Лавочка',
+                    contentHeader: 'Лавочка',
                     contentBody:
                         '<p>Координаты лавочки: ' + [
-                        coords[0].toPrecision(6),
-                        coords[1].toPrecision(6)
+                            coords[0].toPrecision(6),
+                            coords[1].toPrecision(6)
                         ].join(', ') + '</p>',
-                    contentFooter:'<sup>Щелкните еще раз что бы поменять координаты</sup>'
+                    contentFooter: '<sup>Щелкните еще раз что бы поменять координаты</sup>'
                 });
                 in_x.value = coords[0].toPrecision(6);
                 in_y.value = coords[1].toPrecision(6);
@@ -75,13 +195,13 @@
                 myMap.balloon.close();
                 var coords = e.get('coords');
                 myMap.balloon.open(coords, {
-                    contentHeader:'Лавочка',
+                    contentHeader: 'Лавочка',
                     contentBody:
                         '<p>Координаты лавочки: ' + [
-                        coords[0].toPrecision(6),
-                        coords[1].toPrecision(6)
+                            coords[0].toPrecision(6),
+                            coords[1].toPrecision(6)
                         ].join(', ') + '</p>',
-                    contentFooter:'<sup>Щелкните еще раз что бы поменять координаты</sup>'
+                    contentFooter: '<sup>Щелкните еще раз что бы поменять координаты</sup>'
                 });
                 in_x.value = coords[0].toPrecision(6);
                 in_y.value = coords[1].toPrecision(6);
@@ -95,7 +215,7 @@
         myMap.events.add('contextmenu', function (e) {
             myMap.hint.open(e.get('coords'), 'Кто-то щелкнул правой кнопкой');
         });
-        
+
         // Скрываем хинт при открытии балуна.
         myMap.events.add('balloonopen', function (e) {
             myMap.hint.close();
@@ -103,5 +223,3 @@
     }
 </script>
 {% endblock %}
-
-

@@ -127,6 +127,24 @@ body{
     margin: 0%;
 }
 
+#add-form{
+    padding: 1rem;
+    padding-bottom: 3rem;
+}
+
 .map_point_input{
     min-height: 70vh;
+}
+
+.fa-color-a{
+    color: red;
+}
+
+.fa-color-d{
+    color: gray;
+}
+
+.req{
+    font-weight: bold;
+    color: red;
 }

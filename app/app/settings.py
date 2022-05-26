@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1','192.168.100.77', 'f93b-37-214-63-97.eu
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'clientside',
     'django.contrib.admin',
     'django.contrib.auth',
