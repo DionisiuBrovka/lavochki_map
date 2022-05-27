@@ -15,9 +15,9 @@
     <div class="col-md">
         {% if user.is_authenticated %}
             {{ user.get_username }}
-            <a href="{% url 'logout'%}?next={{request.path}}">Выйти</a>
+            <a href="{% url 'logout'%}">Выйти</a>
         {% else %}
-            <a href="{% url 'login'%}?next={{request.path}}"><i class="fa-solid fa-user"></i>Войти/Зарегистрироваться</a>
+            <p><a href="{% url 'login'%}"><i class="fa-solid fa-user"></i>Войти</a> / <a href="{% url 'signup'%}">Зарегистрироваться</a></p>
         {% endif %} 
     </div>
 </div>

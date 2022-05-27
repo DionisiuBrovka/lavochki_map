@@ -1,3 +1,5 @@
+
+
 {% extends "root.html" %}
 
 {% block title %}Лавочки map{% endblock %}
@@ -10,9 +12,14 @@
         {% include 'el/navbar.html' %}
 
         <hr>
-        <p>Вы вышли из учетной записи!</p>
+        <h2>Регистрация</h2>
 
-        <a href="{% url 'login'%}">Войти</a>
+        <form action="{% url 'signup' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Регистрация</button>
+
+        </form>
 
     </div>
 
