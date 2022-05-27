@@ -5,9 +5,13 @@
     <div class="col-md">
         <a href="#content"><i class="fa-solid fa-magnifying-glass"></i> Найти лавочку рядом</a>
     </div>
-    <div class="col-md">
-        <a href="/add_form"><i class="fa-solid fa-circle-plus"></i> Добавить лавочку </a>
-    </div>
+
+    {% if user.is_authenticated %}
+        <div class="col-md">
+            <a href="/add_form"><i class="fa-solid fa-circle-plus"></i> Добавить лавочку </a>
+        </div>
+    {% endif %} 
+    
     <div class="col-md">
         {% if user.is_authenticated %}
             {{ user.get_username }}

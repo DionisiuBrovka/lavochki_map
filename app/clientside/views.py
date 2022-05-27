@@ -130,7 +130,7 @@ def pg_add_form(request):
                 user_profile = Profile.objects.get(pk=request.user.id)
 
                 new_lavochka = Lavochki(
-                    user_id = user_profile,
+                    user = user_profile,
                     x = input_x,
                     y = input_y,
                     description = input_disc,

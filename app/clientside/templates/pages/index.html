@@ -43,6 +43,16 @@
     <script>
         ymaps.ready(init);
 
+        navigator.geolocation.getCurrentPosition(
+        function(position) {
+            alert('Последний раз вас засекали здесь: ' +
+                position.coords.latitude + ", " + position.coords.longitude);
+                x = position.coords.latitude;
+                y = position.coords.longitude;
+            
+            }
+        );
+
         function init () {
             var myMap = new ymaps.Map('map', {
                     center: [53.902284, 27.561831],

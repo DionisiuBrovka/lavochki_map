@@ -27,6 +27,7 @@ class PhotoLav(models.Model):
     alt = models.CharField(
         verbose_name="Описание",
         null=True,
+        blank=True,
         max_length=250
     )
 
@@ -64,17 +65,20 @@ class Lavochki(models.Model):
         PhotoLav, on_delete = models.CASCADE, 
         verbose_name="Главное фото", 
         null=True,
+        blank=True
     )
 
     is_padik =  models.BooleanField(
         verbose_name="Возле подъезда", 
         null=True,
+        blank=True,
         default=False
     ) 
 
     is_ten =  models.BooleanField(
         verbose_name="В тени", 
         null=True,
+        blank=True,
         default=False, 
     ) 
 
@@ -87,6 +91,7 @@ class Lavochki(models.Model):
     rating = models.FloatField(
         verbose_name="Рейтинг", 
         null=True,
+        blank=True,
         default=5.0
     )
 

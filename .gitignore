@@ -4,4 +4,4 @@ __pycache__/
 lavochki-env
 lavochkienv
 
-db.sqlite3
+app/db.sqlite3
