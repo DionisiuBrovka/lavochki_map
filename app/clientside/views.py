@@ -156,6 +156,7 @@ def pg_add_form(request):
         else:
             data = {
                 'is_anser':False,
+                'is_anser':False,
                 'form':AddLavochkaForm()
             }
 
@@ -188,10 +189,10 @@ def pg_api_points(request):
             }, 
             "properties": {
                 "balloonContentHeader": render_to_string('el/map_balloon/head.html', {'id':lavochka.id}), 
-                "balloonContentBody": "<p>Ваше имя: <input name='login'></p><p><em>Телефон в формате 2xxx-xxx:</em>  <input></p><p><input type='submit' value='Отправить'></p>", 
-                "balloonContentFooter": "<font size=1>Информация предоставлена: </font> <strong>этим балуном</strong>", 
-                "clusterCaption": "<strong><s>Еще</s> одна</strong> метка", 
-                "hintContent": "<strong>Текст  <s>подсказки</s></strong>"
+                "balloonContentBody": render_to_string('el/map_balloon/body.html', {'id':lavochka.id}), 
+                "balloonContentFooter": render_to_string('el/map_balloon/caption.html', {'id':lavochka.id}), 
+                "clusterCaption": render_to_string('el/map_balloon/caption.html', {'id':lavochka.id}), 
+                "hintContent": render_to_string('el/map_balloon/hint.html', {'id':lavochka.id}),
             }
         }
 

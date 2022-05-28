@@ -12,10 +12,12 @@ a:hover {
     text-decoration: none;
 }
 
+/* ---------------------------------------------------------------------------------------------------------------- */
 body{
-    background-color: rgb(235, 235, 235);
+    background-color: #2b2b2b;
 }
 
+/* ---------------------------------------------------------------------------------------------------------------- */
 #header{
     min-height: 15vh;
     background-color: rgb(255, 98, 0);
@@ -43,6 +45,7 @@ body{
     font-size: 72pt;
 }
 
+/* ---------------------------------------------------------------------------------------------------------------- */
 .navbar .col-md {
     display: flex;
     flex-direction: column;
@@ -60,6 +63,7 @@ body{
     text-decoration: none;
 }
 
+/* ---------------------------------------------------------------------------------------------------------------- */
 .control-set .col {
     border: 1px solid rgb(205, 205, 205);
     border-radius: 1rem 1rem 0rem 0rem;
@@ -77,6 +81,25 @@ body{
     background-color: rgb(244, 244, 244);
 }
 
+.control-set .col.active {
+    box-shadow: 2px -2px 20px 2px rgba(34, 34, 34, 0.155);
+    background-color: rgb(250, 250, 250);
+    color: #FF512F;
+}
+
+.control-set .col:hover {
+    color: #ff2a00;
+    border: 1px solid #bbbbbb;
+    box-shadow: 2px -2px 20px 2px rgba(34, 34, 34, 0.25);
+
+}
+
+.control-set .col p{
+    color: #ff7323;
+    font-weight: bold;
+    margin: 0px;
+}
+
 .control-set .cs-map {
     margin-right: 0.5rem;
 }
@@ -85,10 +108,6 @@ body{
     margin-left: 0.5rem;
 }
 
-.control-set .col.active {
-    box-shadow: 2px -2px 20px 2px rgba(34, 34, 34, 0.155);
-    background-color: rgb(250, 250, 250);
-}
 
 .control {
     position: relative;
@@ -102,7 +121,9 @@ body{
     margin-top: -1px;
 }
 
+/* ---------------------------------------------------------------------------------------------------------------- */
 #content{
+    padding-bottom: 3rem;
     min-height: 100vh;
     background-color: white;
 
@@ -127,15 +148,49 @@ body{
     margin: 0%;
 }
 
+/* ---------------------------------------------------------------------------------------------------------------- */
 #add-form{
     padding: 1rem;
     padding-bottom: 3rem;
 }
 
 .map_point_input{
-    min-height: 70vh;
+    min-height: 60vh;
 }
 
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+.ymaps-2-1-79-balloon__close-button{
+    background-color: black !important;
+    
+    background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='iso-8859-1'?%3E%3C!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0 --%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='503.021px' height='503.021px' viewBox='0 0 503.021 503.021' style='enable-background:new 0 0 503.021 503.021;' xml:space='preserve'%3E%3Cg%3E%3Cg%3E%3Cpath d='M491.613,75.643l-64.235-64.235c-15.202-15.202-39.854-15.202-55.056,0L251.507,132.222L130.686,11.407 c-15.202-15.202-39.853-15.202-55.055,0L11.401,75.643c-15.202,15.202-15.202,39.854,0,55.056l120.821,120.815L11.401,372.328 c-15.202,15.202-15.202,39.854,0,55.056l64.235,64.229c15.202,15.202,39.854,15.202,55.056,0l120.815-120.814l120.822,120.814 c15.202,15.202,39.854,15.202,55.056,0l64.235-64.229c15.202-15.202,15.202-39.854,0-55.056L370.793,251.514l120.82-120.815 C506.815,115.49,506.815,90.845,491.613,75.643z'/%3E%3C/g%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3Cg%3E%3C/g%3E%3C/svg%3E") !important;
+    
+    color: white !important;
+    font-weight: bolder !important;
+
+    margin: 0px !important;
+    padding: 0px !important;
+
+    height: 35px !important;
+    width: 35px !important;
+}
+
+.ymaps-2-1-79-balloon__content{
+    padding: 0px !important;
+    margin: 0px !important;
+    min-height: 5rem !important;
+
+}
+
+.balloon-head{
+    height: 100%;
+    width: 100%;
+
+    background-color: rgb(255, 98, 0);
+    background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
 .fa-color-a{
     color: red;
 }

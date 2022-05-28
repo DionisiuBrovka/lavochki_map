@@ -8,6 +8,18 @@
 <div class="container" id="content">
     {% include 'el/navbar.html' %}
 
+    {% if is_anser %}
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                Ошибка добавление лавочки проверте форму. 
+            </div>
+        {% else %}
+            <div class="alert alert-success" role="alert">
+                Лавочка успешно отправлена на проверку модератером. 
+            </div>
+        {% endif %}
+    {% endif %}
+
     <form action="" method="post" id="add-form" enctype="multipart/form-data">
         {% csrf_token %}
         <h2>Добавление лавочки</h2>
@@ -140,9 +152,8 @@
         <div class="form-group">
             <label class="" for="">Выберите фотографии лавочи : <i class="req">*</i></label>
             <div class="custom-file">
-                <input type="file" name="files" class="custom-file-input" id="customFile" data-browse="Выбрать файл"
-                    multiple required>
-                <label class="custom-file-label" for="customFile">Выбрать</label>
+                <input type="file" name="files" class="custom-file-input" id="customFile" multiple required>
+                <label class="custom-file-label" for="customFile" data-browse="Выбрать файл">.jpeg/.png</label>
             </div>
         </div>
 
@@ -150,9 +161,7 @@
             <small><i class="req">*</i> - Обязательные для заполнения поля</small>
         </div>
 
-        <div class="alert alert-danger" role="alert">
-            A simple danger alert—check it out!
-        </div>
+
 
         <input type="submit" class="btn btn-primary" value="Добавить лавочку">
     </form>
@@ -171,19 +180,9 @@
     var x;
     var y;
 
-    navigator.geolocation.getCurrentPosition(
-        function (position) {
-            alert('Последний раз вас засекали здесь: ' +
-                position.coords.latitude + ", " + position.coords.longitude);
-            x = position.coords.latitude;
-            y = position.coords.longitude;
-
-        }
-    );
-
     function init() {
         myMap = new ymaps.Map("map", {
-            center: [57.5262, 38.3061], // Углич
+            center: [53.902284, 27.561831],
             zoom: 11
         }, {
             balloonMaxWidth: 200,
