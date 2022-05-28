@@ -27,6 +27,8 @@ SECRET_KEY = KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+AUTH_USER_MODEL = 'clientside.User'
+
 ALLOWED_HOSTS = ['localhost','127.0.0.1','192.168.100.77', 'ce57-37-214-62-33.eu.ngrok.io',]
 
 

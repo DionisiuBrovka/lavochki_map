@@ -1,21 +1,13 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete = models.CASCADE, verbose_name="Пользователь")
+class User(AbstractUser):
     photo = models.CharField(verbose_name="Аватар", max_length=250, blank=True)
     phone_number = models.CharField(verbose_name="Номер телефона", max_length=13, blank=True)
+    email_verify = models.BooleanField(verbose_name="Проверено", null=False, default=False)
 
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
 
 class PhotoLav(models.Model):
     image_path = models.ImageField(
@@ -40,7 +32,7 @@ class PhotoLav(models.Model):
 
 class Lavochki(models.Model):
     user = models.ForeignKey(
-        Profile, 
+        User, 
         on_delete = models.CASCADE, 
         verbose_name="Пользователь",
         null=False
@@ -108,7 +100,7 @@ class Lavochki(models.Model):
 
 class Marks(models.Model):
     user = models.ForeignKey(
-        Profile, 
+        User, 
         on_delete = models.CASCADE, 
         verbose_name="Пользователь",
         null=False
